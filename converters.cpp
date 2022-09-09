@@ -2,6 +2,11 @@
 #include <cmath>
 #include "changebase.hpp"
 
+const char CHIFFRES[16] =   {'0','1','2','3',
+                             '4','5','6','7',
+                             '8','9','A','B',
+                             'C','D','E','F'};
+
 void convertBaseXtoBase10(std::string &nombre, int base){
 
     // somme des (chiffre * base^(position-1))
@@ -33,4 +38,18 @@ void convertBaseXtoBase10(std::string &nombre, int base){
 
 void convertBaseXtoBaseY(std::string &nombre, int base, int base_cible){
 
+}
+
+// validation du nombre en fonction de sa base.
+// TODO : ne tient pas compte des nombre négatifs.
+bool validerNombreBase(std::string nombre, int base){
+    
+    for(char const &char_nombre: nombre){
+
+        for(int i = 0 ; i < base ; i++){
+            if (char_nombre == CHIFFRES[i]) break;
+        }
+        return false;
+    }
+    return true;
 }
