@@ -7,36 +7,52 @@ const char CHIFFRES[16] =   {'0','1','2','3',
                              '8','9','A','B',
                              'C','D','E','F'};
 
-void convertBaseXtoBase10(std::string &nombre, int base){
+// TODO Comment faire si le nombre est binaire et négatif?
+int convertBaseXtoBase10(std::string &nombre, int base){
 
-    // somme des (chiffre * base^(position-1))
+    std::cout << "----------------------" << "--" << "----------------\n";
     std::cout << "Conversion de la base " << base << " à la base 10 : \n";
-    std::cout << "On additionne la multiplication des chiffres avec la base à la puissance de leur position.\n";
-    std::cout << "somme des (chiffre * base^position)\n";
+    std::cout << "----------------------" << "--" << "----------------\n";
 
     int puissance = nombre.size() - 1;
     int somme = 0;
     int somme_totale = 0;
+    int negatif = 1;
+    int position = 0;
 
-    for(int position = 0; position < nombre.size() ; position++, puissance--){
+    // si signe néatif présent
+    if (nombre[position] == '-') {
+        position = 1; // on saute le premier chiffre (qui est le signe)
+        puissance--; // diminue la puissance car elle est basée sur le nombre de caractères
+        negatif = -1; // coefficient négatif
+    }
+
+    for(int i = position ; i < nombre.size() ; i++, puissance--){
 
         int valeur_chiffre = 0;
 
         for (int j = 0; j < base ; j++){
-            if (nombre[position] == CHIFFRES[j]){
+            if (nombre[i] == CHIFFRES[j]){
                 valeur_chiffre = j;
                 break;
             }
         }
 
-        somme = valeur_chiffre * pow(base, puissance);
+        // somme des (chiffre * base^(position-1))
+        somme = negatif * valeur_chiffre * pow(base, puissance);
         somme_totale += somme;
 
-        std::cout << nombre[position] << " (" << valeur_chiffre << ") " << " * " << base << "^" << puissance << " = " << somme << " (total : " << somme_totale << ")" << std::endl;
+        std::cout << negatif * valeur_chiffre << " * " << base << "^" << puissance << " = " << somme << std::endl;
     }
+    std::cout << " Total : " << somme_totale << std::endl;
+    return somme_totale;
 }
 
-void convertBaseXtoBaseY(std::string &nombre, int base, int base_cible){
+void convertBase10toBaseY(std::string &nombre, int base_cible){
+
+    std::cout << "-----------------------------------" << "--\n";
+    std::cout << "Conversion de la base 10 à la base " << base_cible <<"\n";
+    std::cout << "-----------------------------------" << "--\n";
 
 }
 

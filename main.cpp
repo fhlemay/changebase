@@ -7,7 +7,7 @@
 #include <iostream>
 #include "changebase.hpp"
 
-void convertBaseXtoBase10(std::string &nombre, int base);
+//int convertBaseXtoBase10(std::string &nombre, int base);
 
 int main(int argc, char const *argv[]) // les espaces inutiles sont enlevés entre les arguments.
 {
@@ -23,7 +23,7 @@ int main(int argc, char const *argv[]) // les espaces inutiles sont enlevés ent
 
     if(base != 10) { //on converti en premier lieu le nombre d'origine en base 10. nombre_origine est modifié. 
 
-        convertBaseXtoBase10(nombre, base);
+        int tmp = convertBaseXtoBase10(nombre, base);
     }
 
     // if(base_cible != 10) on converti le nombre_origine, maintenant en base 10, vers la base cible.
