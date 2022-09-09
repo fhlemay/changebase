@@ -42,10 +42,10 @@ int CLIparser (int argc, char const *argv[], std::string &nombre, int &base, int
     }
 
     // validation du nombre en fonction de sa base
-    if(!validerNombreBase(nombre, base)) {
+    if(validerNombreBase(nombre, base)) {
         std::cout << "Le nombre est invalide car un ou des chiffres de " << nombre << " ne sont pas valide dans la base " << base <<".\n";
         return 0;
     }
-    
+
     return 1;
 }

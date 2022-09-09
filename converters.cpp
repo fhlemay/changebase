@@ -41,15 +41,16 @@ void convertBaseXtoBaseY(std::string &nombre, int base, int base_cible){
 }
 
 // validation du nombre en fonction de sa base.
-// TODO : ne tient pas compte des nombre négatifs.
 bool validerNombreBase(std::string nombre, int base){
     
     for(char const &char_nombre: nombre){
 
         for(int i = 0 ; i < base ; i++){
+
+            if (char_nombre == '-') break; // si le nombre est négatif, on conserve le signe.
             if (char_nombre == CHIFFRES[i]) break;
         }
-        return false;
+        return false; // le chiffre est invalide, donc le nombre l'est.
     }
-    return true;
+    return true; // tous les chiffres sont valides, donc le nombre est valide.
 }
